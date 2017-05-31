@@ -1,6 +1,6 @@
-var animatePoints = function() {
+var pointsArray = document.getElementsByClassName('point');
 
-    var points = document.getElementsByClassName('point');
+var animatePoints = function(points) {
 
     var revealPoint = function(index) {
 
