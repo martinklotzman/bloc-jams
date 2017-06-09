@@ -1,4 +1,4 @@
-// Example Album
+// Album Examples
 
 var albumPicasso = {
   title: "The Colors",
@@ -15,8 +15,6 @@ var albumPicasso = {
   ]
 };
 
-// Another Example Album
-
 var albumMarconi = {
   title: "The Telephone",
   artist: "Guglielmo Marconi",
@@ -29,6 +27,21 @@ var albumMarconi = {
       { title: "Fits in your pocket", duration: "3:21" },
       { title: "Can you hear me now?", duration: "3:14" },
       { title: "Wrong phone number", duration: "2:15" }
+  ]
+};
+
+var albumMartin = {
+  title: "Learning to Program",
+  artist: "Martin Klotzman",
+  label: "Tech World Struggles",
+  year: "2017",
+  albumArtUrl: "assets/images/album_covers/21.png",
+  songs: [
+      { title: "Defintions using definiton", duration: "4:11" },
+      { title: "Just when you think you understand", duration: "2:11" },
+      { title: "A million computer tabs", duration: "3:56" },
+      { title: "Seeing the light", duration: "1:44" },
+      { title: "Nvm still far away", duration: "9:12" }
   ]
 };
 
@@ -68,5 +81,5 @@ var setCurrentAlbum = function(album) {
 };
 
 window.onload = function() {
-    setCurrentAlbum(albumPicasso);
+    setCurrentAlbum(albumMartin);
 };
