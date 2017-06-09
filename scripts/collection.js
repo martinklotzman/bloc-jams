@@ -8,7 +8,7 @@ var collectionItemTemplate =
   + '       <a href="album.html">Pablo Picasso</a>'
   + '       <br/>'
   + '       X songs'
-  + '       <br/'
+  + '       <br/>'
   + '     </p>'
   + '   </div>'
   + '</div>'
