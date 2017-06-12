@@ -81,7 +81,7 @@ var setCurrentAlbum = function(album) {
 
 // Elements we'll be adding listeners to
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
-var songRows = document.getElementsByClassName('album-view-song-list');
+var songRows = document.getElementsByClassName('album-view-song-item');
 // Album button template
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 
@@ -96,7 +96,7 @@ window.onload = function() {
 
     });
 
-    for(var i = 0; i < songRows.length; i++){
+    for(var i = 0; i < songRows.length; i++) {
       songRows[i].addEventListener('mouseleave', function(event){
           this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
       });
