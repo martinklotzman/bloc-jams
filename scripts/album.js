@@ -78,9 +78,16 @@ var setCurrentAlbum = function(album) {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
 };
+var songlistContainer = document.getElementsByClassName('album-view-song-list')[0];
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    songlistContainer.addEventListener('mouseover', function(event){
+      // #1
+      console.log(event.target);
+
+    });
 
     albums = [albumPicasso, albumMarconi, albumMartin];
     index = 0;
