@@ -80,12 +80,19 @@ var setCurrentAlbum = function(album) {
 };
 var songlistContainer = document.getElementsByClassName('album-view-song-list')[0];
 
+// Album button template
+var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"</span></a>';
+
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
 
     songlistContainer.addEventListener('mouseover', function(event){
       // #1
       console.log(event.target);
+
+      if(event.target.parentElement.className === "album-view-song-item") {
+        event.target.parentElement.querySelector(".song-item-number").innerHTML = playButtonTemplate;
+      }
 
     });
 
