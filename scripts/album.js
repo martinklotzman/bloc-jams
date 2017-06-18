@@ -84,6 +84,7 @@ var songListContainer = document.getElementsByClassName('album-view-song-list')[
 var songRows = document.getElementsByClassName('album-view-song-item');
 // Album button template
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
+var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
@@ -140,5 +141,5 @@ var getSongItem = function(element) {
             return element;
         default:
             return;
-    }  
+    }
 };
