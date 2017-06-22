@@ -145,6 +145,12 @@ window.onload = function() {
 
       if(event.target.parentElement.className === 'album-view-song-item') {
         event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+
+        var songItem = getSongItem(event.target);
+
+        if(songItem.getAttribute('song-item-number') !== currentlyPlayingSong) {
+          songItem.innerHTML = playButtonTemplate;
+        }
       }
 
     });
