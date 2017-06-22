@@ -150,8 +150,13 @@ window.onload = function() {
 
     for(var i = 0; i < songRows.length; i++) {
       songRows[i].addEventListener('mouseleave', function(event){
-          // Selects the first child element, which is the song-item-number element
-          this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+
+          var songItem = getSongItem(event.target);
+          var songItemNumber = songItem.getAttribute('data-song-number');
+
+          if (songItemNumber !== currentlyPlayingSong) {
+            songItem.innerHTML = songItemNumber;
+          }
       });
 
       songRows[i].addEventListener('click', function(event){
