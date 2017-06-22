@@ -108,7 +108,22 @@ var getSongItem = function(element) {
     }
 };
 
-// Elements we'll be adding listeners to
+var clickHandler = function(targetElement) {
+
+    var songItem = getSongItem(targetElement);
+
+    if (currentlyPlayingSong === null) {
+        songItem.innerHTML = pauseButtomTemplate;
+        currentlyPlayingSong = songItem.getAttribute('data-song-number');
+    } else if (currentlyPlayingSong === songItem.getAttribute('data-song-number')) {
+        songItem.innerHTML = playButtonTemplate;
+        currentlyPlayingSong = null;
+    }
+
+};
+
+
+// Table** Elements we'll be adding listeners to
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 var songRows = document.getElementsByClassName('album-view-song-item');
 // Album button template
