@@ -120,6 +120,7 @@ var clickHandler = function(targetElement) {
         currentlyPlayingSong = null;
     } else if (currentlyPlayingSong !== songItem.getAttribute('data-song-number')) {
         var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + currentlyPlayingSong + '"]');
+        currentlyPlayingSongElement.innerHTML = currentlyPlayingSongElement.getAttribute('data-song-number');
         songItem.innerHTML = pauseButtonTemplate;
         currentlyPlayingSong = songItem.getAttribute('data-song-number');
     }
@@ -151,7 +152,7 @@ window.onload = function() {
     for(var i = 0; i < songRows.length; i++) {
       songRows[i].addEventListener('mouseleave', function(event){
 
-          var songItem = getSongItem(event.target);
+          var songItem = getSongItem(event.target); //ASK WILL
           var songItemNumber = songItem.getAttribute('data-song-number');
 
           if (songItemNumber !== currentlyPlayingSong) {
