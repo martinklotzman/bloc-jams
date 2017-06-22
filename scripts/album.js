@@ -118,6 +118,10 @@ var clickHandler = function(targetElement) {
     } else if (currentlyPlayingSong === songItem.getAttribute('data-song-number')) {
         songItem.innerHTML = playButtonTemplate;
         currentlyPlayingSong = null;
+    } else if (currentlyPlayingSong !== songItem.getAttribute('data-song-number')) {
+        var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + currentlyPlayingSong + '"]');
+        songItem.innerHTML = pauseButtonTemplate;
+        currentlyPlayingSong = songItem.getAttribute('data-song-number');
     }
 
 };
@@ -146,11 +150,13 @@ window.onload = function() {
 
     for(var i = 0; i < songRows.length; i++) {
       songRows[i].addEventListener('mouseleave', function(event){
+          // Selects the first child element, which is the song-item-number element
           this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
       });
 
       songRows[i].addEventListener('click', function(event){
-
+          // Event handler call
+          clickHandler(event.target);
       });
 
     }
