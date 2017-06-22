@@ -81,12 +81,18 @@ var setCurrentAlbum = function(album) {
 // Traverse DOM upward until a parent with specified class is found
 var findParentByClassName = function(element, targetClass) {
 
-  if (element) {
+  if (element.parentElement) {
       var currentParent = element.parentElement;
       while(currentParent.className !== targetClass && currentParent.className !== null) {
         currentParent = currentParent.parentElement;
     }
       return currentParent;
+  }else if (element.parentElement === null){
+      console.log("No parent found");
+  }else {
+      while(element.ParentElement.getElementsByClassName(targetClass) === null) {
+        console.log("No parent found with that class name");
+      }
   }
 };
 
@@ -144,12 +150,12 @@ window.onload = function() {
     songListContainer.addEventListener('mouseover', function(event) {
 
       if(event.target.parentElement.className === 'album-view-song-item') {
-        event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+          event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
 
-        var songItem = getSongItem(event.target);
+          var songItem = getSongItem(event.target);
 
-        if(songItem.getAttribute('song-item-number') !== currentlyPlayingSong) {
-          songItem.innerHTML = playButtonTemplate;
+          if(songItem.getAttribute('song-item-number') !== currentlyPlayingSong) {
+            songItem.innerHTML = playButtonTemplate;
         }
       }
 
