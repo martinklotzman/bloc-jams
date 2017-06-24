@@ -53,6 +53,30 @@
   position: relative;
 }
 
+.player-bar .currently-playing .song-name,
+.player-bar .currently-playing .artist-name,
+.player-bar .currently-playing .artist-song-mobile {
+  text-align: center;
+  font-size: 0.75rem;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  font-weight: 300;
+}
+
+.player-bar .currently-playing .song-name,
+.player-bar .currently-playing .artist-song-mobile {
+  top: 1.1rem;
+}
+
+.player-bar .currently-playing .artist-name {
+  bottom: 1.1rem;
+}
+
+.player-bar .currently-playing .artist-song-mobile {
+  display: none;
+}
+
 .player-bar .volume {
   width: 25%;
   text-align: right;
