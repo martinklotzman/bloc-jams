@@ -1,0 +1,45 @@
+.play-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0
+  right: 0;
+  height: 200px;
+  background-color; rgba(255, 255, 255, 0.3);
+  z-index: 100;
+}
+
+.play-bar a,
+.play-bar a:hover {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.play-bar .container {
+  display: table;
+  padding: 0;
+  width: 90%;
+  min-height: 100%;
+}
+
+.play-bar .control-group {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.play-bar .main-controls {
+  width: 25%;
+  text-align: left;
+  padding-right: 1rem;
+}
+
+.play-bar .currently-playing {
+  width: 50%;
+  text-align: center;
+  position: relative;
+}
+
+.play-bar .volume {
+  width: 25%;
+  text-align: right;
+}
