@@ -1,18 +1,3 @@
-var albumMartin = {
-  title: "Learning to Program",
-  artist: "Martin Klotzman",
-  label: "Tech World Struggles",
-  year: "2017",
-  albumArtUrl: "assets/images/album_covers/21.png",
-  songs: [
-      { title: "Defintions using definiton", duration: "4:11" },
-      { title: "Just when you think you understand", duration: "2:11" },
-      { title: "A million computer tabs", duration: "3:56" },
-      { title: "Seeing the light", duration: "1:44" },
-      { title: "Nvm still far away", duration: "9:12" }
-  ]
-};
-
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
     '<tr class="album-view-song-item">'
@@ -79,7 +64,7 @@ var $albumSongList = $('.album-view-song-list');
 
 
 var setCurrentAlbum = function(album) {
-
+    currentAlbum = album;
     $albumTitle.text(album.title);
     $albumArtist.text(album.artist);
     $albumReleaseInfo.text(album.year + ' ' + album.label);
@@ -98,8 +83,10 @@ var setCurrentAlbum = function(album) {
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 
-//store state of playing songs
-var currentlyPlayingSong = null;
+//store state of albums and playing songs
+var currentAlbum = null;
+var currentlyPlayingSongNumber = null;
+var currentSongFromAlbum = null;
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
