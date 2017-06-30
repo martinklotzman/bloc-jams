@@ -166,34 +166,10 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
 //store state of playing songs
 var currentlyPlayingSong = null;
 
-window.onload = function() {
+$(document).ready(function() {
     setCurrentAlbum(albumPicasso);
 
-    songListContainer.addEventListener('mouseover', function(event) {
-
-      if(event.target.parentElement.className === 'album-view-song-item') {
-          event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
-
-          var songItem = getSongItem(event.target);
-
-          if(songItem.getAttribute('song-item-number') !== currentlyPlayingSong) {
-            songItem.innerHTML = playButtonTemplate;
-        }
-      }
-
-    });
-
     for(var i = 0; i < songRows.length; i++) {
-      songRows[i].addEventListener('mouseleave', function(event){
-
-          var songItem = getSongItem(event.target); //ASK WILL
-          var songItemNumber = songItem.getAttribute('data-song-number');
-
-          if (songItemNumber !== currentlyPlayingSong) {
-            songItem.innerHTML = songItemNumber;
-          }
-      });
-
       songRows[i].addEventListener('click', function(event){
           // Event handler call
           clickHandler(event.target);
@@ -211,4 +187,4 @@ window.onload = function() {
         }
 
     });
-};
+});
