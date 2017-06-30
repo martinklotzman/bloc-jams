@@ -90,6 +90,8 @@ var updatePlayerBarSong = function (album) {
 // Album button template
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
+var playerBarPlayButton = '<span class="ion-play"></span>';
+var playerBarPauseButton = '<span class="ion-pause"></span>';
 
 //store state of albums and playing songs
 var currentAlbum = null;
