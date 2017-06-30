@@ -54,7 +54,12 @@ var createSongRow = function(songNumber, songName, songLength) {
   + '</tr>'
   ;
 
-    return $(template);
+    var $row = $(template);
+
+    $row.find('.song-item-number').click(clickHandler);
+    $row.hover(onHover, offHover);
+
+    return $row;
 };
 
 
