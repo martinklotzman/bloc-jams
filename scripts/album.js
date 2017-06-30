@@ -23,10 +23,11 @@ var createSongRow = function(songNumber, songName, songLength) {
           $(this).html(pauseButtonTemplate);
           currentlyPlayingSongNumber = songNumber;
           currentSongFromAlbum = currentAlbum.songs[songNumber - 1]; //Ask Will
-
+          updatePlayerBarSong();
       } else if (currentlyPlayingSongNumber === songNumber) {
           // Switch from Pause -> Play button to pause currently playing song.
           $(this).html(playButtonTemplate);
+          $('main-controls .play-pause').html(playerBarPlayButton);
           currentlyPlayingSongNumber = null;
           currentSongFromAlbum = null;
       }
@@ -85,6 +86,7 @@ var updatePlayerBarSong = function (album) {
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentSongFromAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentSongFromAlbum.artist);
+    $('.main-controls .play-pause').html(playerBarPauseButton);
 };
 
 // Album button template
