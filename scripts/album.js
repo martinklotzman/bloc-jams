@@ -102,4 +102,14 @@ var currentSongFromAlbum = null;
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
+
+    var albums = [albumPicasso, albumMarconi, albumMartin];
+    var index = 1;
+    $albumImage.click(function(){
+      setCurrentAlbum(albums[index]);
+      index++;
+      if (index === albums.length) {
+        index = 0;
+      }
+    });
   });
