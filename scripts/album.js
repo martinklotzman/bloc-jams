@@ -84,7 +84,7 @@ var setCurrentAlbum = function(album) {
 
 var updatePlayerBarSong = function (album) {
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
-    $('.currently-playing .artist-name').text(currentSongFromAlbum.artist);
+    $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentSongFromAlbum.artist);
     $('.main-controls .play-pause').html(playerBarPauseButton);
 };
