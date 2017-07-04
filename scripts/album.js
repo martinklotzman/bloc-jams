@@ -86,6 +86,32 @@ var trackIndex = function(album, song) {
     return album.songs.indexOf(song);
 };
 
+var nextSong = function() {
+    var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
+    //We're incrementing the song here
+    currentSongIndex++;
+
+    if (currentSongIndex >= currentAlbum.songs.length) {
+        currentSongIndex = 0;
+    }
+
+    //Save the last song number before changing it
+    var lastSongNumber = currentlyPlayingSongNumber;
+
+    //Set new song number
+    currentlyPlayingSongNumber = currentSongIndex + 1;
+    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+
+    //Update Player Bar information
+    updatePlayerBarSong();
+
+    var $nextSongNumberCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
+    var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');
+
+    $nextSongNumberCell.html(pauseButtonTemplate);
+    $lastSongNumberCell.html(lastSongNumber);
+};
+
 var updatePlayerBarSong = function (album) {
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
