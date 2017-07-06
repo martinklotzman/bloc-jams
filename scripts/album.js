@@ -47,7 +47,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             } else {
                 $(this).html(playButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPlayButton);
-                currentSoundFile.isPaused();
+                currentSoundFile.pause();
             }
         }
     };
