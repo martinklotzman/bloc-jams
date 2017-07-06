@@ -147,7 +147,7 @@ var previousSong = function() {
     $previousSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);
 
-}
+};
 
 var updatePlayerBarSong = function (album) {
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
