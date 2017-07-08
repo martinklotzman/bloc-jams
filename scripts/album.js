@@ -190,14 +190,33 @@ var currentlyPlayingSongNumber = null;
 var currentSongFromAlbum = null;
 var currentSoundFile = null;
 var currentVolume = 80;
+var songNumberCell = $(this).find('.song-item-number');
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+
+var togglePlayFromPlayerBar = function() {
+
+    if (currentSoundFile.isPaused()) {
+        songNumberCell.html(pauseButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPauseButton);
+        currentSoundFile.play();
+    }
+
+     else if (currentSoundFile != null) {
+        songNumberCell.html(playButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPlayButton);
+        currentSoundFile.pause();
+    }
+};
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
+
+    var $mainPlayPause = $('.main-controls .play-pause');
+    $mainPlayPause.click(togglePlayFromPlayerBar);
 
     var albums = [albumPicasso, albumMarconi, albumMartin];
     var index = 1;
