@@ -115,12 +115,30 @@ var setCurrentAlbum = function(album) {
 var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
 
+    //#1 Make sure our % isn't less than 0 or greater than 100
     offsetXPercent = Math.max(0, offsetXPercent);
     offsetXPercent = Math.min(100, offsetXPercent);
 
+    //#2 Convert percentage to a string. .thumb & .fill interpret as a percentage
     var percentageString = offsetXPercent + '%';
     $seekBar.find('.fill').width(percentageString);
-    $seekBar.find('thumb').css({left: percentageString});
+    $seekBar.find('.thumb').css({left: percentageString});
+};
+
+var setupSeekBars() = function() {
+    var $seekBars = $('.player-bar .seek-bar');
+
+    $seekBars.click(function(event) {
+        //#3 Holds the X coordiante at which the event occured
+        var offsetX = event.pageX - $(this).offset().left;
+        var barWidth = $(this).width();
+
+        //#4 Divide offsetX by the width of bar to calculate seekBarFillRatio
+        var seekBarFillRatio = offsetX / barWidth;
+
+        //#5 Pass $(this) as the $seekBar & seekBarFillRatio as argurments
+        updateSeekPercentage($(this), seekBarFillRatio);
+    });
 };
 
 var trackIndex = function(album, song) {
@@ -230,6 +248,7 @@ var togglePlayFromPlayerBar = function() {
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
+    setupSekBars();
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
 
