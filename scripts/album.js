@@ -49,6 +49,7 @@ var createSongRow = function(songNumber, songName, songLength) {
           $(this).html(pauseButtonTemplate);
           setSong(songNumber);
           currentSoundFile.play();
+          updateSeekBarWhileSongPlays();
           updatePlayerBarSong();
       } else if (currentlyPlayingSongNumber === songNumber) {
           // Switch from Pause -> Play button to pause currently playing song.
@@ -56,6 +57,7 @@ var createSongRow = function(songNumber, songName, songLength) {
                 $(this).html(pauseButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPauseButton);
                 currentSoundFile.play();
+                updateSeekBarWhileSongPlays();
             } else {
                 $(this).html(playButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPlayButton);
@@ -109,6 +111,19 @@ var setCurrentAlbum = function(album) {
     for (var i = 0; i < album.songs.length; i++) {
         var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
         $albumSongList.append($newRow);
+    }
+};
+
+var updateSeekBarWhileSongPlays = function() {
+    if (currentSoundFile) {
+        //#10 timeupdate is a custom Buzz event that fires repeatedly while time elapses during song playback
+        currentSoundFile.bind('timeupdate', function(event) {
+            //#11 Buzz - getTime() method to get current time of song and getDuration for total song length
+            var seekBarFillRatio = this.getTime() / this.getDuration();
+            var $seekBar = $('.seek-control .seek-bar');
+
+            updateSeekPercentage($seekBar, seekBarFillRatio);
+        });
     }
 };
 
@@ -182,6 +197,7 @@ var nextSong = function() {
     //Set new song number
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
+    updateSeekBarWhileSongPlays();
 
     //Update Player Bar information
     updatePlayerBarSong();
@@ -208,6 +224,7 @@ var previousSong = function() {
     //Set new song number
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
+    updateSeekBarWhileSongPlays();
 
     //Update Player Bar information
     updatePlayerBarSong();
