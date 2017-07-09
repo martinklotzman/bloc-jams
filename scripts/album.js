@@ -158,6 +158,12 @@ var setupSeekBars = function() {
         //#4 Divide offsetX by the width of bar to calculate seekBarFillRatio
         var seekBarFillRatio = offsetX / barWidth;
 
+        if ($(this).parent().attr('class') === 'seek-control') {
+            seek(seekBarFillRatio * currentSoundFile.getDuration());
+        } else {
+            setVolume(seekBarFillRatio * 100);
+        }
+
         //#5 Pass $(this) as the $seekBar & seekBarFillRatio as argurments
         updateSeekPercentage($(this), seekBarFillRatio);
     });
@@ -171,6 +177,12 @@ var setupSeekBars = function() {
             var offsetX = event.pageX - $seekBar.offset().left;
             var barWidth = $seekBar.width();
             var seekBarFillRatio = offsetX / barWidth;
+
+            if($(this).parent().attr('class') === 'seek-control') {
+                seek(seekBarFillRatio * currentSoundFile.getDuration());
+            } else {
+                setVolume(seekBarFillRatio);
+            }
 
             updateSeekPercentage($seekBar, seekBarFillRatio);
         });
