@@ -126,6 +126,7 @@ var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
 };
 
 var setupSeekBars = function() {
+    //#6 Find all DOM elements with class of seek-bar contained in element with player-bar class
     var $seekBars = $('.player-bar .seek-bar');
 
     $seekBars.click(function(event) {
@@ -138,6 +139,27 @@ var setupSeekBars = function() {
 
         //#5 Pass $(this) as the $seekBar & seekBarFillRatio as argurments
         updateSeekPercentage($(this), seekBarFillRatio);
+    });
+    //#7 Find elements with class of .thumb inside of $seekBars and add a mousedown event
+    $seekBars.find('.thumb').mousedown(function(event) {
+        //#8 .this is equal to .thumb in node that was clicked.
+        // Because we attach an event to both song seek and volume control this lets us determine the node dispatched
+        var $seekBar = $(this).parent();
+        // #9 We use bind() because it allows us to namespace event listeners
+        $(document).bind('mousemove.thumb', function(event) {
+            var offsetX = event.pageX - $seekBar.offset().left;
+            var barWidth = $seekBar.width();
+            var seekBarFillRatio = offsetX / barWidth;
+
+            updateSeekPercentage($seekBar, seekBarFillRatio);
+        });
+
+        //#10 Removes the previous event listeners otherwise thumb would continue to move after its released
+        $(document).bind('mouseup.thumb', function() {
+            $(document).unbind('mousemove.thumb');
+            $(document).unbind('mouseup.thumb');
+
+        });
     });
 };
 
