@@ -125,7 +125,7 @@ var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     $seekBar.find('.thumb').css({left: percentageString});
 };
 
-var setupSeekBars() = function() {
+var setupSeekBars = function() {
     var $seekBars = $('.player-bar .seek-bar');
 
     $seekBars.click(function(event) {
@@ -248,7 +248,7 @@ var togglePlayFromPlayerBar = function() {
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
-    setupSekBars();
+    setupSeekBars();
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
 
