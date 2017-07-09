@@ -56,6 +56,10 @@ var createSongRow = function(songNumber, songName, songLength) {
           setSong(songNumber);
           currentSoundFile.play();
           updateSeekBarWhileSongPlays();
+          var $volumeFill = $('.volume .fill');
+          var $volumeThumb = $('.volume .thumb');
+          $volumeFill.width(currentVolume + '%');
+          $volumeThumb.css({left: currentVolume + '%'});
           updatePlayerBarSong();
       } else if (currentlyPlayingSongNumber === songNumber) {
           // Switch from Pause -> Play button to pause currently playing song.
@@ -181,7 +185,7 @@ var setupSeekBars = function() {
             if($(this).parent().attr('class') === 'seek-control') {
                 seek(seekBarFillRatio * currentSoundFile.getDuration());
             } else {
-                setVolume(seekBarFillRatio);
+                setVolume(seekBarFillRatio * 100);
             }
 
             updateSeekPercentage($seekBar, seekBarFillRatio);
