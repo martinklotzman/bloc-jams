@@ -325,7 +325,11 @@ var filterTimeCode = function(timeInSeconds) {
     var minutes = Math.floor(totalSeconds / 60);
     var seconds = Math.floor(totalSeconds - minutes * 60);
 
-    return minutes + ":" + seconds;
+    var ret = "";
+
+    ret += "" + minutes + ":" + (seconds < 10 ? "0" : "");
+    ret += "" + seconds;
+    return ret;
 };
 
 $(document).ready(function() {
