@@ -292,13 +292,14 @@ var $nextButton = $('.main-controls .next');
 var togglePlayFromPlayerBar = function() {
 
     if (currentSoundFile === null) {
-     setSong(1);
-     updatePlayerBarSong();
-     updateSeekBarWhileSongPlays();
-     songNumberCell.html(pauseButtonTemplate);
-     $('.main-controls .play-pause').html(playerBarPauseButton);
-
-     currentSoundFile.play();
+       setSong(1);
+       updatePlayerBarSong();
+       updateSeekBarWhileSongPlays();
+       $('.main-controls .play-pause').html(playerBarPauseButton);
+       currentSoundFile.play();
+       $('.song-item-number').first().html(pauseButtonTemplate);
+       $(".volume > .seek-bar > .fill").css("width","80.0%");
+       $(".volume > .seek-bar > .thumb").css("left","80.0%");
     }
     else if (currentSoundFile.isPaused()) {
         songNumberCell.html(pauseButtonTemplate);
