@@ -289,7 +289,7 @@ var songNumberCell = $(this).find('.song-item-number');
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
 
-var playBarPlaying = false;
+
 
 var togglePlayFromPlayerBar = function() {
 
