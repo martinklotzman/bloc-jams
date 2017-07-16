@@ -290,7 +290,6 @@ var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
 
 
-
 var togglePlayFromPlayerBar = function() {
 
     if (currentSoundFile === null) {
