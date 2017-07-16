@@ -292,20 +292,6 @@ var $nextButton = $('.main-controls .next');
 var playBarPlaying = false;
 
 var togglePlayFromPlayerBar = function() {
-    //changes songrow icon if playerbar is used 
-    if (!playBarPlaying) {
-        playBarPlaying = true;
-
-        console.log(currentlyPlayingSongNumber);
-        $("td[data-song-number=" + currentlyPlayingSongNumber + "] span").attr("class", "ion-pause");
-    }
-    else {
-        playBarPlaying = false;
-
-        console.log(currentlyPlayingSongNumber);
-        $("td[data-song-number=" + currentlyPlayingSongNumber + "] span").attr("class", "ion-play");
-
-    }
 
     if (currentSoundFile === null) {
        setSong(1);
@@ -320,12 +306,14 @@ var togglePlayFromPlayerBar = function() {
     else if (currentSoundFile.isPaused()) {
         $('.main-controls .play-pause').html(playerBarPauseButton);
         currentSoundFile.play();
-        //change player row icon;
+        $("td[data-song-number=" + currentlyPlayingSongNumber + "] span").attr("class", "ion-pause");
+
     }
     else if (currentSoundFile != null) {
         $('.main-controls .play-pause').html(playerBarPlayButton);
         currentSoundFile.pause();
-        //change player row icon;
+        $("td[data-song-number=" + currentlyPlayingSongNumber + "] span").attr("class", "ion-play");
+
     }
 
 };
