@@ -292,18 +292,18 @@ var $nextButton = $('.main-controls .next');
 var playBarPlaying = false;
 
 var togglePlayFromPlayerBar = function() {
-
+    //changes songrow icon if playerbar is used 
     if (!playBarPlaying) {
         playBarPlaying = true;
 
         console.log(currentlyPlayingSongNumber);
-        $("td[data-song-number=" + currentlyPlayingSongNumber + "] test").attr("class", "ion-pause");
+        $("td[data-song-number=" + currentlyPlayingSongNumber + "] span").attr("class", "ion-pause");
     }
     else {
         playBarPlaying = false;
 
         console.log(currentlyPlayingSongNumber);
-        $("td[data-song-number=" + currentlyPlayingSongNumber + "] test").attr("class", "ion-play");
+        $("td[data-song-number=" + currentlyPlayingSongNumber + "] span").attr("class", "ion-play");
 
     }
 
