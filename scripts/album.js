@@ -289,7 +289,23 @@ var songNumberCell = $(this).find('.song-item-number');
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
 
+var playBarPlaying = false;
+
 var togglePlayFromPlayerBar = function() {
+
+    if (!playBarPlaying) {
+        playBarPlaying = true;
+
+        console.log(currentlyPlayingSongNumber);
+        $("td[data-song-number=" + currentlyPlayingSongNumber + "] test").attr("class", "ion-pause");
+    }
+    else {
+        playBarPlaying = false;
+
+        console.log(currentlyPlayingSongNumber);
+        $("td[data-song-number=" + currentlyPlayingSongNumber + "] test").attr("class", "ion-play");
+
+    }
 
     if (currentSoundFile === null) {
        setSong(1);
@@ -302,14 +318,14 @@ var togglePlayFromPlayerBar = function() {
        $(".volume > .seek-bar > .thumb").css("left","80.0%");
     }
     else if (currentSoundFile.isPaused()) {
-        songNumberCell.html(pauseButtonTemplate);
         $('.main-controls .play-pause').html(playerBarPauseButton);
         currentSoundFile.play();
+        //change player row icon;
     }
     else if (currentSoundFile != null) {
-        songNumberCell.html(playButtonTemplate);
         $('.main-controls .play-pause').html(playerBarPlayButton);
         currentSoundFile.pause();
+        //change player row icon;
     }
 
 };
